@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:~/SLI0095.h2
+  thymleaf:
+    cache: false
