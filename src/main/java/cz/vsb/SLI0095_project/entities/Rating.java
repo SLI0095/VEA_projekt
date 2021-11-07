@@ -1,6 +1,7 @@
 package cz.vsb.SLI0095_project.entities;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -12,7 +13,7 @@ public class Rating {
 
     @OneToOne(mappedBy = "id")
     private User ratingAuthor;
-    private Date ratingDate;
+    private LocalDate ratingDate;
     private int numberOfStars;
     @OneToOne(mappedBy = "bookId")
     private Book ratedBook;

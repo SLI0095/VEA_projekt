@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Person list</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="person,iter :${persons}">
+        <td th:text="${person.name}">First Name</td>
+        <td th:text="${person.surname}">Second Name</td>
+        <td>
+            <a th:href="@{edit(index=${iter.index})}">Edit 1</a>
+            <a th:href="@{edit/{index}(index=${iter.index})}">Edit 2</a>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+</body>
+<a th:href="@{newPerson}">New</a>
+</html>

@@ -10,4 +10,7 @@ public class User extends Person{
     private String password;
 
 
+    public User(long id, String name, String surname) {
+        super(id, name, surname);
+    }
 }
