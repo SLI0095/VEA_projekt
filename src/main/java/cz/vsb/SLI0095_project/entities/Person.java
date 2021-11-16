@@ -1,31 +1,37 @@
 package cz.vsb.SLI0095_project.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Person {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(
+        name = "PERSON_TYPE",
+        discriminatorType = DiscriminatorType.STRING
+)
+public abstract class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long person_id;
     private String name;
     private String surname;
 
-    public Person(long id, String name, String surname) {
-        this.id = id;
+
+    public Person() {
+
+    }
+
+    public Person(String name, String surname) {
         this.name = name;
         this.surname = surname;
     }
 
     public long getId() {
-        return id;
+        return person_id;
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.person_id = id;
     }
 
     public String getName() {
