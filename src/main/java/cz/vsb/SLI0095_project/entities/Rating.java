@@ -2,7 +2,6 @@ package cz.vsb.SLI0095_project.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 public class Rating {
@@ -12,7 +11,7 @@ public class Rating {
     private long ratingId;
 
     @ManyToOne
-    private User ratingAuthor;
+    private MyUser ratingAuthor;
 
     private LocalDate ratingDate;
     private int ratingScore;
@@ -20,19 +19,19 @@ public class Rating {
     @OneToOne(mappedBy = "bookId")
     private Book ratedBook;
 
-    private String comment;
+    private String ratingComment;
 
 
     public Rating() {
 
     }
 
-    public Rating(User ratingAuthor, LocalDate ratingDate, int ratingScore, Book ratedBook, String comment) {
+    public Rating(MyUser ratingAuthor, LocalDate ratingDate, int ratingScore, Book ratedBook, String ratingComment) {
         this.ratingAuthor = ratingAuthor;
         this.ratingDate = ratingDate;
         this.ratingScore = ratingScore;
         this.ratedBook = ratedBook;
-        this.comment = comment;
+        this.ratingComment = ratingComment;
     }
 
     public long getRatingId() {
@@ -43,11 +42,11 @@ public class Rating {
         this.ratingId = ratingId;
     }
 
-    public User getRatingAuthor() {
+    public MyUser getRatingAuthor() {
         return ratingAuthor;
     }
 
-    public void setRatingAuthor(User ratingAuthor) {
+    public void setRatingAuthor(MyUser ratingAuthor) {
         this.ratingAuthor = ratingAuthor;
     }
 
@@ -75,11 +74,11 @@ public class Rating {
         this.ratedBook = ratedBook;
     }
 
-    public String getComment() {
-        return comment;
+    public String getRatingComment() {
+        return ratingComment;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setRatingComment(String ratingComment) {
+        this.ratingComment = ratingComment;
     }
 }
