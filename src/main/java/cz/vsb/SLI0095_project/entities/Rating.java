@@ -16,7 +16,7 @@ public class Rating {
     private LocalDate ratingDate;
     private int ratingScore;
 
-    @OneToOne(mappedBy = "bookId")
+    @ManyToOne
     private Book ratedBook;
 
     private String ratingComment;

@@ -10,7 +10,7 @@ import java.util.List;
 @DiscriminatorValue(value = "AUTHOR")
 public class Author extends Person{
 
-    @OneToMany(mappedBy = "bookId")
+    @OneToMany(mappedBy = "bookAuthor")
     private List<Book> books;
     private LocalDate dateOfBirth;
     private String authorInformation;

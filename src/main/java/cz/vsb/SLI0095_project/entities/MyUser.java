@@ -13,7 +13,7 @@ public class MyUser extends Person{
     private String login;
     private String password;
 
-    @OneToMany(mappedBy = "ratingId")
+    @OneToMany(mappedBy = "ratingAuthor")
     private List<Rating> usersRatings;
 
 

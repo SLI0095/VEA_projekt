@@ -17,7 +17,7 @@ public class Book {
     @ManyToOne
     private Author bookAuthor;
 
-    @OneToMany(mappedBy = "ratingId")
+    @OneToMany(mappedBy = "ratedBook")
     private List<Rating> ratings;
 
     private LocalDate releaseDate;

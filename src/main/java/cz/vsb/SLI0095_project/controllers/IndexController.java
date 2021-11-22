@@ -14,7 +14,6 @@ public class IndexController {
 
     @RequestMapping("/")
     public String index(Model model) {
-        authorService.init();
         return "index";
     }
 }
