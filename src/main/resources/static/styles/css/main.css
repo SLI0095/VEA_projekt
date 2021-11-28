@@ -1,0 +1,10 @@
+.mainMenu{
+    width: 100vw;
+	background-color: lightskyblue;
+	margin: 0;
+}
+
+.mainMenuButton{
+	color:	white;
+	background-color: none;
+}

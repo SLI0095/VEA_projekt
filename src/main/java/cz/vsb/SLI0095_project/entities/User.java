@@ -7,8 +7,8 @@ import javax.persistence.UniqueConstraint;
 import java.util.List;
 
 @Entity
-@DiscriminatorValue(value = "MY_USER")
-public class MyUser extends Person{
+@DiscriminatorValue(value = "USER")
+public class User extends Person{
 
     private String login;
     private String password;
@@ -17,11 +17,11 @@ public class MyUser extends Person{
     private List<Rating> usersRatings;
 
 
-    public MyUser() {
+    public User() {
 
     }
 
-    public MyUser(String name, String surname, String login, String password, List<Rating> usersRatings) {
+    public User(String name, String surname, String login, String password, List<Rating> usersRatings) {
         super(name, surname);
         this.login = login;
         this.password = password;

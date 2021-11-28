@@ -1,5 +1,7 @@
 package cz.vsb.SLI0095_project.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -12,6 +14,8 @@ public class Author extends Person{
 
     @OneToMany(mappedBy = "bookAuthor")
     private List<Book> books;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dateOfBirth;
     private String authorInformation;
 

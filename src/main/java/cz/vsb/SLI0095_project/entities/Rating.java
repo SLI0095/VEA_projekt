@@ -11,7 +11,7 @@ public class Rating {
     private long ratingId;
 
     @ManyToOne
-    private MyUser ratingAuthor;
+    private User ratingAuthor;
 
     private LocalDate ratingDate;
     private int ratingScore;
@@ -26,7 +26,7 @@ public class Rating {
 
     }
 
-    public Rating(MyUser ratingAuthor, LocalDate ratingDate, int ratingScore, Book ratedBook, String ratingComment) {
+    public Rating(User ratingAuthor, LocalDate ratingDate, int ratingScore, Book ratedBook, String ratingComment) {
         this.ratingAuthor = ratingAuthor;
         this.ratingDate = ratingDate;
         this.ratingScore = ratingScore;
@@ -42,11 +42,11 @@ public class Rating {
         this.ratingId = ratingId;
     }
 
-    public MyUser getRatingAuthor() {
+    public User getRatingAuthor() {
         return ratingAuthor;
     }
 
-    public void setRatingAuthor(MyUser ratingAuthor) {
+    public void setRatingAuthor(User ratingAuthor) {
         this.ratingAuthor = ratingAuthor;
     }
 

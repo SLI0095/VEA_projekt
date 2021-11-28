@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Amazing bookstore</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/styles/css/main.css}" rel="stylesheet" />
+</head>
+
+<body>
+<div class="mainMenu">
+    <a th:href="@{authorsMain}">
+        <button  class="mainMenuButton">Authors</button>
+    </a>
+    <a th:href="@{booksMain}">
+        <button class="mainMenuButton">Books</button>
+    </a>
+    <a th:href="@{usersMain}">
+        <button class="mainMenuButton">Users</button>
+    </a>
+</div>
+<div class="pageContent">
+    <h1>New author</h1>
+    <form th:action="@{createAuthor}" th:object="${author}">
+        <input type="text" th:field="*{name}"/>
+        <input type="text" th:field="*{surname}"/>
+        <input type="text" th:field="*{authorInformation}"/>
+        <input type="date" th:field="*{dateOfBirth}"/>
+        <input type="submit" value="Save">
+    </form>
+</div>
+</body>
+</html>

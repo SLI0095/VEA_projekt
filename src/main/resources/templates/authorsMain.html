@@ -9,7 +9,6 @@
 </head>
 
 <body>
-
     <div class="mainMenu">
         <a th:href="@{authorsMain}">
             <button  class="mainMenuButton">Authors</button>
@@ -22,9 +21,14 @@
         </a>
     </div>
     <div class="pageContent">
-        <p>Welcome to our bookstore</p>
+        <h1>List of authors</h1>
+        <th:block th:each="author : ${authorsList}">
+            <h2 th:text="${author.name} + ' ' + ${author.surname}">Name Surname</h2>
+        </th:block>
+
+        <a th:href="@{newAuthor}">
+            <button>Add new Author</button>
+        </a>
     </div>
-
 </body>
-
 </html>
