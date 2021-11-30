@@ -9,7 +9,6 @@
 </head>
 
 <body>
-
 <div class="mainMenu">
     <a th:href="@{authorsMain}">
         <button  class="mainMenuButton">Authors</button>
@@ -24,10 +23,15 @@
         <button class="mainMenuButton">Users</button>
     </a>
 </div>
-    <div class="pageContent">
-        <p>Welcome to our bookstore</p>
-    </div>
+<div class="pageContent">
+    <h1>List of users</h1>
+    <th:block th:each="user : ${usersList}">
+        <h2 th:text="${user.name} + ' ' + ${user.surname} + '('  + ${user.login} + ')'">Name Surname</h2>
+    </th:block>
 
+    <a th:href="@{newUser}">
+        <button>Register new user</button>
+    </a>
+</div>
 </body>
-
 </html>

@@ -1,6 +1,7 @@
 package cz.vsb.SLI0095_project.entities;
 
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -17,9 +18,11 @@ public class Book {
     @ManyToOne
     private Author bookAuthor;
 
+
     @OneToMany(mappedBy = "ratedBook")
     private List<Rating> ratings;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate releaseDate;
 
     public long getBookId() {

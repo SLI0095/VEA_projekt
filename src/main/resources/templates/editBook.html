@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Amazing bookstore</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/styles/css/main.css}" rel="stylesheet" />
+</head>
+
+<body>
+<div class="mainMenu">
+    <a th:href="@{authorsMain}">
+        <button  class="mainMenuButton">Authors</button>
+    </a>
+    <a th:href="@{booksMain}">
+        <button class="mainMenuButton">Books</button>
+    </a>
+    <a th:href="@{newRating}">
+        <button class="mainMenuButton">Add book rating</button>
+    </a>
+    <a th:href="@{usersMain}">
+        <button class="mainMenuButton">Users</button>
+    </a>
+</div>
+<div class="pageContent">
+    <h1>Book info</h1>
+    <form method="post" th:action="@{saveBook}" th:object="${book}">
+        <input type="hidden" th:field="*{bookId}"/>
+        <label for="name">Name of the book:</label><br>
+        <input id="name" type="text" th:field="*{bookName}"/><br>
+        <label for="author">Author:</label><br>
+        <select id="author" th:field="*{bookAuthor}">
+            <option th:each="author : ${authorsList}" th:value="${author.personId}" th:text="${author.name} + ' ' + ${author.surname}">
+            </option>
+        </select><br>
+        <label for="date">Release date:</label><br>
+        <input id="date" type="date" th:field="*{releaseDate}"/><br><br>
+        <button type="submit" name="action" value="save">Save</button>
+        <button type="submit" name="action" value="delete">Delete</button>
+    </form>
+</div>
+</body>
+</html>

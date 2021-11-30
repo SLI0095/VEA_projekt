@@ -24,17 +24,17 @@
     </a>
 </div>
 <div class="pageContent">
-    <h1>New author</h1>
-    <form th:action="@{createAuthor}" th:object="${author}">
-        <label for="name">Name:</label><br>
-        <input id="name" type="text" th:field="*{name}"/><br>
-        <label for="surname">Surname:</label><br>
-        <input id="surname" type="text" th:field="*{surname}"/><br>
-        <label for="info">Information about author:</label><br>
-        <textarea id="info" name="info" th:field="*{authorInformation}" rows="10" cols="30"></textarea><br>
-<!--        <input id="info" type="te" th:field="*{authorInformation}"/><br>-->
-        <label for="dob">Date of birth:</label><br>
-        <input id="dob" type="date" th:field="*{dateOfBirth}"/><br><br>
+    <h1>New book</h1>
+    <form method="post" th:action="@{createBook}" th:object="${book}">
+        <label for="name">Name of the book:</label><br>
+        <input id="name" type="text" th:field="*{bookName}"/><br>
+        <label for="author">Author:</label><br>
+        <select id="author" th:field="*{bookAuthor}">
+            <option th:each="author : ${authorsList}" th:value="${author.personId}" th:text="${author.name} + ' ' + ${author.surname}">
+            </option>
+        </select><br>
+        <label for="date">Release date:</label><br>
+        <input id="date" type="date" th:field="*{releaseDate}"/><br><br>
         <input type="submit" value="Save">
     </form>
 </div>

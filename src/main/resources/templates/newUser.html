@@ -9,7 +9,6 @@
 </head>
 
 <body>
-
 <div class="mainMenu">
     <a th:href="@{authorsMain}">
         <button  class="mainMenuButton">Authors</button>
@@ -24,10 +23,19 @@
         <button class="mainMenuButton">Users</button>
     </a>
 </div>
-    <div class="pageContent">
-        <p>Welcome to our bookstore</p>
-    </div>
-
+<div class="pageContent">
+    <h1>New user</h1>
+    <form th:action="@{createUser}" th:object="${user}">
+        <label for="name">Name:</label><br>
+        <input id="name" type="text" th:field="*{name}"/><br>
+        <label for="surname">Surname:</label><br>
+        <input id="surname" type="text" th:field="*{surname}"/><br>
+        <label for="login">Login:</label><br>
+        <input id="login" type="text" th:field="*{login}"/><br>
+        <label for="password">Password:</label><br>
+        <input id="password" type="password" th:field="*{password}"/><br><br>
+        <input type="submit" value="Save">
+    </form>
+</div>
 </body>
-
 </html>

@@ -21,34 +21,38 @@ public class AuthorService {
     @Autowired
     private AuthorJPARepository authorJPARepository;
 
-    public List<Person> getAllAuthors(){
-        List<Person> authors = new ArrayList<>();
-        Iterable<Person> iterator = authorJPARepository.findAll();
-        for(Person p : iterator){
-            authors.add(p);
+    public List<Author> getAllAuthors(){
+        List<Author> authors = new ArrayList<>();
+        Iterable<Author> iterator = authorJPARepository.findAll();
+        for(Author a : iterator){
+            authors.add(a);
         }
         return authors;
     }
 
     @Transactional
     public void saveAuthor(Author author){
-        if(author.getId() == 0){
+        if(author.getPersonId() == 0){
            authorJPARepository.save(author);
         }
-        else if (author.getId() > 0){
-            if(authorJPARepository.existsById(author.getId())){
+        else if (author.getPersonId() > 0){
+            if(authorJPARepository.existsById(author.getPersonId())){
                 authorJPARepository.save(author);
             }
         }
     }
 
-    public Person getAuthorById(long id){
-        Optional<Person> authorData = authorJPARepository.findById(id);
+    public Author getAuthorById(long id){
+        Optional<Author> authorData = authorJPARepository.findById(id);
         if(authorData.isPresent())
         {
             return authorData.get();
         }
         else return null;
+    }
+
+    public void deleteAuthor(Author author){
+        authorJPARepository.delete(author);
     }
 
     /*

@@ -12,7 +12,7 @@ public abstract class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long person_id;
+    private long personId;
     private String name;
     private String surname;
 
@@ -26,13 +26,7 @@ public abstract class Person {
         this.surname = surname;
     }
 
-    public long getId() {
-        return person_id;
-    }
 
-    public void setId(long id) {
-        this.person_id = id;
-    }
 
     public String getName() {
         return name;
@@ -48,5 +42,13 @@ public abstract class Person {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public long getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(long personId) {
+        this.personId = personId;
     }
 }

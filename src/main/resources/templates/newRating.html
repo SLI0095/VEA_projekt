@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Amazing bookstore</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/styles/css/main.css}" rel="stylesheet" />
+</head>
+
+<body>
+<div class="mainMenu">
+    <a th:href="@{authorsMain}">
+        <button  class="mainMenuButton">Authors</button>
+    </a>
+    <a th:href="@{booksMain}">
+        <button class="mainMenuButton">Books</button>
+    </a>
+    <a th:href="@{newRating}">
+        <button class="mainMenuButton">Add book rating</button>
+    </a>
+    <a th:href="@{usersMain}">
+        <button class="mainMenuButton">Users</button>
+    </a>
+</div>
+<div class="pageContent">
+    <h1>New rating</h1>
+    <form method="post" th:action="@{createRating}" th:object="${rating}">
+        <label for="user">Author of rating:</label><br>
+        <select id="user" th:field="*{ratingAuthor}">
+            <option th:each="user : ${usersList}" th:value="${user.personId}" th:text="${user.login}">
+            </option>
+        </select><br>
+        <label for="book">Rated book:</label><br>
+        <select id="book" th:field="*{ratedBook}">
+            <option th:each="book : ${booksList}" th:value="${book.bookId}" th:text="${book.bookName}">
+            </option>
+        </select><br>
+        <label for="comment">Comment:</label><br>
+        <textarea id="comment" name="info" th:field="*{ratingComment}" rows="10" cols="30"></textarea><br>
+        <label for="points">Points (between 0 and 10):</label>
+        <input th:field="*{ratingScore}" type="number" id="points" name="points" min="0" max="10"><br><br>
+        <input type="submit" value="Save">
+    </form>
+</div>
+</body>
+</html>

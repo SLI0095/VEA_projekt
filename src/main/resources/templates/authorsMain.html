@@ -16,6 +16,9 @@
         <a th:href="@{booksMain}">
             <button class="mainMenuButton">Books</button>
         </a>
+        <a th:href="@{newRating}">
+            <button class="mainMenuButton">Add book rating</button>
+        </a>
         <a th:href="@{usersMain}">
             <button class="mainMenuButton">Users</button>
         </a>
@@ -23,11 +26,14 @@
     <div class="pageContent">
         <h1>List of authors</h1>
         <th:block th:each="author : ${authorsList}">
-            <h2 th:text="${author.name} + ' ' + ${author.surname}">Name Surname</h2>
+            <a th:href="@{editAuthor(id=${author.personId})}">
+                <h2 th:text="${author.name} + ' ' + ${author.surname}">Name Surname</h2>
+            </a>
+
         </th:block>
 
         <a th:href="@{newAuthor}">
-            <button>Add new Author</button>
+            <button>Add new author</button>
         </a>
     </div>
 </body>

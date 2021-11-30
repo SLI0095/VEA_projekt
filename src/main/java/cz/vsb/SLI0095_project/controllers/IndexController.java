@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
 
-    @Autowired
-    AuthorService authorService;
 
     @RequestMapping("/")
     public String index(Model model) {

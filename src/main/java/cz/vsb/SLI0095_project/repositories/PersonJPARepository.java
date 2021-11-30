@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.List;
 
-@NoRepositoryBean
+@Repository
 public interface PersonJPARepository extends CrudRepository<Person, Long> {
 
 }

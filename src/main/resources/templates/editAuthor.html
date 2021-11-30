@@ -24,19 +24,24 @@
     </a>
 </div>
 <div class="pageContent">
-    <h1>New author</h1>
-    <form th:action="@{createAuthor}" th:object="${author}">
+    <h1>Author info</h1>
+    <form th:action="@{saveAuthor}" th:object="${author}">
+        <input type="hidden" th:field="*{personId}"/>
         <label for="name">Name:</label><br>
         <input id="name" type="text" th:field="*{name}"/><br>
         <label for="surname">Surname:</label><br>
         <input id="surname" type="text" th:field="*{surname}"/><br>
         <label for="info">Information about author:</label><br>
         <textarea id="info" name="info" th:field="*{authorInformation}" rows="10" cols="30"></textarea><br>
-<!--        <input id="info" type="te" th:field="*{authorInformation}"/><br>-->
         <label for="dob">Date of birth:</label><br>
         <input id="dob" type="date" th:field="*{dateOfBirth}"/><br><br>
-        <input type="submit" value="Save">
+        <button type="submit" name="action" value="save">Save</button>
+        <button type="submit" name="action" value="delete">Delete</button>
     </form>
+    <h1>Author's books</h1>
+    <ul>
+        <li th:each="book : ${author.books}" th:text="${book.bookName}">book name</li>
+    </ul>
 </div>
 </body>
 </html>

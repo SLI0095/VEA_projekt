@@ -9,7 +9,6 @@
 </head>
 
 <body>
-
 <div class="mainMenu">
     <a th:href="@{authorsMain}">
         <button  class="mainMenuButton">Authors</button>
@@ -24,10 +23,18 @@
         <button class="mainMenuButton">Users</button>
     </a>
 </div>
-    <div class="pageContent">
-        <p>Welcome to our bookstore</p>
-    </div>
+<div class="pageContent">
+    <h1>List of books</h1>
+    <th:block th:each="book : ${booksList}">
+        <a th:href="@{editBook(id=${book.bookId})}">
+            <h2 th:text="${book.bookName}">Name Surname</h2>
+        </a>
+        <a th:href="@{bookRatings(id=${book.bookId})}">see ratings</a>
+    </th:block><br>
 
+    <a th:href="@{newBook}">
+        <button>Add new book</button>
+    </a>
+</div>
 </body>
-
 </html>
