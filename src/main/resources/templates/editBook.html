@@ -27,6 +27,7 @@
     <h1>Book info</h1>
     <form method="post" th:action="@{saveBook}" th:object="${book}">
         <input type="hidden" th:field="*{bookId}"/>
+        <input type="hidden" th:field="*{ratings}"/>
         <label for="name">Name of the book:</label><br>
         <input id="name" type="text" th:field="*{bookName}"/><br>
         <label for="author">Author:</label><br>

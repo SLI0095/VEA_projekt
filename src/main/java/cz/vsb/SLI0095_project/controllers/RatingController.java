@@ -1,6 +1,5 @@
 package cz.vsb.SLI0095_project.controllers;
 
-import cz.vsb.SLI0095_project.entities.Book;
 import cz.vsb.SLI0095_project.entities.Rating;
 import cz.vsb.SLI0095_project.services.BookService;
 import cz.vsb.SLI0095_project.services.RatingService;

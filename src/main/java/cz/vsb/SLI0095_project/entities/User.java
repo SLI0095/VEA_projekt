@@ -1,5 +1,9 @@
 package cz.vsb.SLI0095_project.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+import cz.vsb.SLI0095_project.Views;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -10,8 +14,11 @@ import java.util.List;
 @DiscriminatorValue(value = "USER")
 public class User extends Person{
 
+    @JsonView(Views.Public.class)
     private String login;
+
     private String password;
+
 
     @OneToMany(mappedBy = "ratingAuthor")
     private List<Rating> usersRatings;
@@ -21,8 +28,12 @@ public class User extends Person{
 
     }
 
-    public User(String name, String surname, String login, String password, List<Rating> usersRatings) {
-        super(name, surname);
+    public User(long personId) {
+        super(personId);
+    }
+
+    public User(long personId, String name, String surname, String login, String password, List<Rating> usersRatings) {
+        super(personId, name, surname);
         this.login = login;
         this.password = password;
         this.usersRatings = usersRatings;

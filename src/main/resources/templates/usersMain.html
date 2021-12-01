@@ -26,7 +26,9 @@
 <div class="pageContent">
     <h1>List of users</h1>
     <th:block th:each="user : ${usersList}">
-        <h2 th:text="${user.name} + ' ' + ${user.surname} + '('  + ${user.login} + ')'">Name Surname</h2>
+        <a th:href="@{editUser(id=${user.personId})}">
+            <h2 th:text="${user.name} + ' ' + ${user.surname} + '('  + ${user.login} + ')'">Name Surname</h2>
+        </a>
     </th:block>
 
     <a th:href="@{newUser}">

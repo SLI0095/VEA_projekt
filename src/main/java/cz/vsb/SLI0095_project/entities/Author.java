@@ -1,5 +1,7 @@
 package cz.vsb.SLI0095_project.entities;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import cz.vsb.SLI0095_project.Views;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.DiscriminatorValue;
@@ -15,8 +17,11 @@ public class Author extends Person{
     @OneToMany(mappedBy = "bookAuthor")
     private List<Book> books;
 
+    @JsonView(Views.Public.class)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dateOfBirth;
+
+    @JsonView(Views.Public.class)
     private String authorInformation;
 
     public List<Book> getBooks() {
@@ -46,8 +51,12 @@ public class Author extends Person{
     public Author() {
     }
 
-    public Author(String name, String surname, List<Book> books, LocalDate dateOfBirth, String authorInformation) {
-        super(name, surname);
+    public Author(long personId) {
+        super(personId);
+    }
+
+    public Author(long personId, String name, String surname, List<Book> books, LocalDate dateOfBirth, String authorInformation) {
+        super(personId ,name, surname);
         this.books = books;
         this.dateOfBirth = dateOfBirth;
         this.authorInformation = authorInformation;

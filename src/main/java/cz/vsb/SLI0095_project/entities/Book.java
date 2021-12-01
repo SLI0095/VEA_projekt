@@ -1,27 +1,36 @@
 package cz.vsb.SLI0095_project.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import cz.vsb.SLI0095_project.Views;
 
 @Entity
 public class Book {
 
+    @JsonView(Views.Public.class)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long bookId;
+
+    @JsonView(Views.Public.class)
     private String bookName;
 
+    @JsonView(Views.Public.class)
     @ManyToOne
     private Author bookAuthor;
+
 
 
     @OneToMany(mappedBy = "ratedBook")
     private List<Rating> ratings;
 
+    @JsonView(Views.Public.class)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate releaseDate;
 
@@ -69,7 +78,12 @@ public class Book {
 
     }
 
-    public Book(String bookName, Author bookAuthor, List<Rating> ratings, LocalDate releaseDate) {
+    public Book(long bookId) {
+        this.bookId = bookId;
+    }
+
+    public Book(long bookId, String bookName, Author bookAuthor, List<Rating> ratings, LocalDate releaseDate) {
+        this.bookId = bookId;
         this.bookName = bookName;
         this.bookAuthor = bookAuthor;
         this.ratings = ratings;

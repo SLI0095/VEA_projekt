@@ -1,5 +1,8 @@
 package cz.vsb.SLI0095_project.entities;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import cz.vsb.SLI0095_project.Views;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,12 +11,17 @@ import javax.persistence.*;
         name = "PERSON_TYPE",
         discriminatorType = DiscriminatorType.STRING
 )
-public abstract class Person {
+public class Person {
 
+    @JsonView(Views.Public.class)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long personId;
+
+    @JsonView(Views.Public.class)
     private String name;
+
+    @JsonView(Views.Public.class)
     private String surname;
 
 
@@ -21,7 +29,12 @@ public abstract class Person {
 
     }
 
-    public Person(String name, String surname) {
+    public Person(long personId) {
+        this.personId = personId;
+    }
+
+    public Person(long personId, String name, String surname) {
+        this.personId = personId;
         this.name = name;
         this.surname = surname;
     }

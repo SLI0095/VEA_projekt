@@ -1,5 +1,8 @@
 package cz.vsb.SLI0095_project.entities;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import cz.vsb.SLI0095_project.Views;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -10,22 +13,26 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long ratingId;
 
+    @JsonView(Views.Public.class)
     @ManyToOne
     private User ratingAuthor;
 
+    @JsonView(Views.Public.class)
     private int ratingScore;
 
+    @JsonView(Views.Public.class)
     @ManyToOne
     private Book ratedBook;
 
+    @JsonView(Views.Public.class)
     private String ratingComment;
-
 
     public Rating() {
 
     }
 
-    public Rating(User ratingAuthor, int ratingScore, Book ratedBook, String ratingComment) {
+    public Rating(long ratingId ,User ratingAuthor, int ratingScore, Book ratedBook, String ratingComment) {
+        this.ratingId = ratingId;
         this.ratingAuthor = ratingAuthor;
         this.ratingScore = ratingScore;
         this.ratedBook = ratedBook;

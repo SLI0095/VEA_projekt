@@ -1,8 +1,6 @@
 package cz.vsb.SLI0095_project.controllers;
 
-import cz.vsb.SLI0095_project.entities.Author;
 import cz.vsb.SLI0095_project.entities.Book;
-import cz.vsb.SLI0095_project.entities.User;
 import cz.vsb.SLI0095_project.services.AuthorService;
 import cz.vsb.SLI0095_project.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
