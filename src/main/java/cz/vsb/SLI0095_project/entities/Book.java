@@ -15,7 +15,7 @@ public class Book {
 
     @JsonView(Views.Public.class)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long bookId;
 
     @JsonView(Views.Public.class)

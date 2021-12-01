@@ -30,6 +30,22 @@ public class BookJDBCRepository {
     }
 
     public List<Book> getBooksFromAuthor(long authorId){
-        return jdbcTemplate.query("SELECT * FROM BOOK WHERE RATING_AUTHOR_PERSON_ID = ?", new Object[ ] { authorId}, new BookMapper());
+        return jdbcTemplate.query("SELECT * FROM BOOK WHERE BOOK_AUTHOR_PERSON_ID = ?", new Object[] { authorId}, new BookMapper());
+    }
+
+    public void saveBook(Book book){
+        if(book.getBookId() > 0) {
+            jdbcTemplate.update("UPDATE BOOK SET BOOK_NAME = ?, RELEASE_DATE = ?, BOOK_AUTHOR_PERSON_ID = ? WHERE BOOK_ID = ?",
+                    book.getBookName(), book.getReleaseDate(),book.getBookAuthor().getPersonId(),book.getBookId());
+        }
+        else {
+            jdbcTemplate.update("INSERT INTO BOOK(BOOK_NAME, RELEASE_DATE, BOOK_AUTHOR_PERSON_ID) VALUES(?, ?, ?)",
+                    book.getBookName(),book.getReleaseDate(),book.getBookAuthor().getPersonId());
+        }
+
+    }
+
+    public void deleteBook(Book book){
+        jdbcTemplate.update("DELETE FROM BOOK WHERE BOOK_ID = ?", book.getBookId());
     }
 }

@@ -32,7 +32,7 @@ public class RatingJDBCService implements RatingService{
 
     @Override
     public void saveRating(Rating rating) {
-
+        ratingJDBCRepository.saveRating(rating);
     }
 
     @Override
@@ -51,11 +51,11 @@ public class RatingJDBCService implements RatingService{
 
     @Override
     public Rating getRatingById(long id) {
-        return null;
+        return ratingJDBCRepository.getRatingById(id);
     }
 
     @Override
     public void deleteRating(Rating rating) {
-
+        ratingJDBCRepository.deleteRating(rating);
     }
 }

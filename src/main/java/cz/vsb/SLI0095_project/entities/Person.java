@@ -15,7 +15,7 @@ public class Person {
 
     @JsonView(Views.Public.class)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long personId;
 
     @JsonView(Views.Public.class)

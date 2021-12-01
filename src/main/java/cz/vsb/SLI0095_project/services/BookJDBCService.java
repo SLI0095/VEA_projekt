@@ -50,7 +50,7 @@ public class BookJDBCService implements BookService{
 
     @Override
     public void saveBook(Book book) {
-
+        bookJDBCRepository.saveBook(book);
     }
 
     @Override
@@ -70,6 +70,9 @@ public class BookJDBCService implements BookService{
 
     @Override
     public void deleteBook(Book book) {
-
+        for(Rating rating : book.getRatings()) {
+            ratingJDBCRepository.deleteRating(rating);
+        }
+        bookJDBCRepository.deleteBook(book);
     }
 }

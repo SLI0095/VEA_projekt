@@ -1,5 +1,6 @@
 package cz.vsb.SLI0095_project.repositories;
 
+import cz.vsb.SLI0095_project.entities.Author;
 import cz.vsb.SLI0095_project.entities.User;
 import cz.vsb.SLI0095_project.mappers.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,22 @@ public class UserJDBCRepository {
 
     public User getUserById(long id){
         return jdbcTemplate.queryForObject("SELECT * FROM PERSON WHERE PERSON_ID = ?", new Object[] { id }, new UserMapper());
+    }
+
+    public void saveUser(User user){
+        if(user.getPersonId() > 0) {
+            jdbcTemplate.update("UPDATE PERSON SET NAME = ?, SURNAME = ?, LOGIN = ?, PASSWORD = ? WHERE PERSON_ID = ?",
+                    user.getName(),user.getSurname(), user.getLogin(), user.getPassword(), user.getPersonId());
+        }
+        else {
+            jdbcTemplate.update("INSERT INTO PERSON(PERSON_TYPE, NAME, SURNAME, LOGIN, PASSWORD) VALUES('AUTHOR', ?, ?, ?, ?)",
+                    user.getName(),user.getSurname(), user.getLogin(), user.getPassword());
+        }
+
+    }
+
+    public void deleteUser(User user){
+        jdbcTemplate.update("DELETE FROM PERSON WHERE PERSON_ID = ?", user.getPersonId());
     }
 
 }

@@ -1,10 +1,13 @@
 package cz.vsb.SLI0095_project.services;
 
+import cz.vsb.SLI0095_project.entities.Rating;
 import cz.vsb.SLI0095_project.entities.User;
+import cz.vsb.SLI0095_project.repositories.RatingJDBCRepository;
 import cz.vsb.SLI0095_project.repositories.UserJDBCRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,6 +20,8 @@ public class UserJDBCService implements UserService{
 
     @Autowired
     UserJDBCRepository userJDBCRepository;
+    @Autowired
+    RatingJDBCRepository ratingJDBCRepository;
 
     @Override
     public List<User> getAllUsers() {
@@ -26,7 +31,7 @@ public class UserJDBCService implements UserService{
 
     @Override
     public void saveUser(User user) {
-
+        userJDBCRepository.saveUser(user);
     }
 
     @Override
@@ -35,8 +40,12 @@ public class UserJDBCService implements UserService{
         return user;
     }
 
+
     @Override
     public void deleteUser(User user) {
-
+        for(Rating rating : user.getUsersRatings()) {
+            ratingJDBCRepository.deleteRating(rating);
+        }
+        userJDBCRepository.deleteUser(user);
     }
 }

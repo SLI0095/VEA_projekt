@@ -2,8 +2,10 @@ package cz.vsb.SLI0095_project.services;
 
 import cz.vsb.SLI0095_project.entities.Author;
 import cz.vsb.SLI0095_project.entities.Book;
+import cz.vsb.SLI0095_project.entities.Rating;
 import cz.vsb.SLI0095_project.repositories.AuthorJDBCRepository;
 import cz.vsb.SLI0095_project.repositories.BookJDBCRepository;
+import cz.vsb.SLI0095_project.repositories.RatingJDBCRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,8 @@ public class AuthorJDBCService implements AuthorService{
     AuthorJDBCRepository authorJDBCRepository;
     @Autowired
     BookJDBCRepository bookJDBCRepository;
+    @Autowired
+    RatingJDBCRepository ratingJDBCRepository;
 
     @Override
     public List<Author> getAllAuthors() {
@@ -39,7 +43,7 @@ public class AuthorJDBCService implements AuthorService{
 
     @Override
     public void saveAuthor(Author author) {
-
+        authorJDBCRepository.saveAuthor(author);
     }
 
     @Override
@@ -56,6 +60,12 @@ public class AuthorJDBCService implements AuthorService{
 
     @Override
     public void deleteAuthor(Author author) {
-
+        for(Book book : author.getBooks()) {
+            for(Rating rating : book.getRatings()) {
+                ratingJDBCRepository.deleteRating(rating);
+            }
+            bookJDBCRepository.deleteBook(book);
+        }
+        authorJDBCRepository.deleteAuthor(author);
     }
 }
