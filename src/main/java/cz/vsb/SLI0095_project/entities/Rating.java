@@ -20,7 +20,7 @@ public class Rating {
     @JsonView(Views.Public.class)
     private int ratingScore;
 
-    @JsonView(Views.Public.class)
+    @JsonView(Views.RatingInfo.class)
     @ManyToOne
     private Book ratedBook;
 

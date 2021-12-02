@@ -1,10 +1,73 @@
+body {
+    margin:0;
+    padding:0;
+}
 .mainMenu{
     width: 100vw;
 	background-color: lightskyblue;
 	margin: 0;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
 }
 
+.pageContent{
+	padding-left: 1.5em;
+}
+
+h1, h2, h3, a, button, input, ul, li, textarea{
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+label{
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-weight: bold;
+}
+
+a{
+	text-decoration: none;
+}
+
+.bookDiv h3, a{
+	display: inline;
+    vertical-align: middle;
+}
+
+button{
+	color:white;
+	background-color: lightskyblue;
+	border: none;
+}
+button:hover{
+	background-color:  rgb(179, 226, 255);
+}
 .mainMenuButton{
-	color:	black;
-	background-color: none;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-weight: bold;
+    font-size:1.5em;
+	size: large;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	margin-left: 0.5em;
+	color:	white;
+	background-color: lightskyblue;
+	border: none;
+}
+
+.mainMenuButton:hover {
+    background-color: rgb(179, 226, 255);
+}
+
+.MainMenuButton{
+    color: white;
+    background-color: #3DC26B;
+    text-align: center;
+    /*height: 1em;*/
+    /*width:1em;*/
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: bold;
+    font-size:1.5em;
+    border:none;
+    margin: 0.5em 1em;
+}
+.MainMenuButton:hover {
+    background-color: #8ED4A6;
 }

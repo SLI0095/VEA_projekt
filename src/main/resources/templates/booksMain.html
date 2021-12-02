@@ -3,7 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Amazing bookstore</title>
+    <title>Amazing book database</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link th:href="@{/styles/css/main.css}" rel="stylesheet" />
 </head>
@@ -24,13 +24,16 @@
     </a>
 </div>
 <div class="pageContent">
-    <h1>List of books</h1>
+    <h2>List of books</h2>
     <th:block th:each="book : ${booksList}">
-        <a th:href="@{editBook(id=${book.bookId})}">
-            <h2 th:text="${book.bookName}">Name Surname</h2>
-        </a>
-        <a th:href="@{bookRatings(id=${book.bookId})}">see ratings</a>
-    </th:block><br>
+        <div class="bookDiv">
+            <a th:href="@{editBook(id=${book.bookId})}">
+                <h3 th:text="${book.bookName}">Name Surname</h3>
+            </a>
+            <a th:href="@{bookRatings(id=${book.bookId})}">(Ratings)</a>
+        </div>
+
+    </th:block><br><br>
 
     <a th:href="@{newBook}">
         <button>Add new book</button>

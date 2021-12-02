@@ -21,12 +21,12 @@ public class Book {
     @JsonView(Views.Public.class)
     private String bookName;
 
-    @JsonView(Views.Public.class)
+    @JsonView(Views.RatingInfo.class)
     @ManyToOne
     private Author bookAuthor;
 
 
-
+    @JsonView(Views.BookInfo.class)
     @OneToMany(mappedBy = "ratedBook")
     private List<Rating> ratings;
 

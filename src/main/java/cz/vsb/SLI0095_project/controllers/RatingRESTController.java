@@ -26,7 +26,7 @@ public class RatingRESTController {
     @Autowired
     BookService bookService;
 
-    @JsonView(Views.Public.class)
+    @JsonView(Views.RatingInfo.class)
     @GetMapping("/ratings")
     public List<Rating> getAllRatings(){
         return ratingService.getAllRatings();

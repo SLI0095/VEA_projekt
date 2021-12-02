@@ -3,7 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Amazing bookstore</title>
+    <title>Amazing book database</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link th:href="@{/styles/css/main.css}" rel="stylesheet" />
 </head>
@@ -24,10 +24,10 @@
     </a>
 </div>
 <div class="pageContent">
-    <h1>List of users</h1>
+    <h2>List of users</h2>
     <th:block th:each="user : ${usersList}">
         <a th:href="@{editUser(id=${user.personId})}">
-            <h2 th:text="${user.name} + ' ' + ${user.surname} + '('  + ${user.login} + ')'">Name Surname</h2>
+            <h3 th:text="${user.name} + ' ' + ${user.surname} + '('  + ${user.login} + ')'">Name Surname</h3>
         </a>
     </th:block>
 

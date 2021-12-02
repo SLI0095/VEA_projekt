@@ -14,6 +14,7 @@ import java.util.List;
 @DiscriminatorValue(value = "AUTHOR")
 public class Author extends Person{
 
+    @JsonView(Views.AuthorInfo.class)
     @OneToMany(mappedBy = "bookAuthor")
     private List<Book> books;
 

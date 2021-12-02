@@ -3,7 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Amazing bookstore</title>
+    <title>Amazing book database</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link th:href="@{/styles/css/main.css}" rel="stylesheet" />
 </head>
@@ -24,7 +24,7 @@
     </a>
 </div>
 <div class="pageContent">
-    <h1>Book info</h1>
+    <h2>Book info</h2>
     <form method="post" th:action="@{saveBook}" th:object="${book}">
         <input type="hidden" th:field="*{bookId}"/>
         <input type="hidden" th:field="*{ratings}"/>

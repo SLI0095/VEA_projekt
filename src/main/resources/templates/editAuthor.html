@@ -3,7 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Amazing bookstore</title>
+    <title>Amazing book database</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link th:href="@{/styles/css/main.css}" rel="stylesheet" />
 </head>
@@ -24,7 +24,7 @@
     </a>
 </div>
 <div class="pageContent">
-    <h1>Author info</h1>
+    <h2>Author info</h2>
     <form th:action="@{saveAuthor}" th:object="${author}">
         <input type="hidden" th:field="*{personId}"/>
         <input type="hidden" th:field="*{books}"/>
@@ -39,7 +39,7 @@
         <button type="submit" name="action" value="save">Save</button>
         <button type="submit" name="action" value="delete">Delete</button>
     </form>
-    <h1>Author's books</h1>
+    <h2>Author's books</h2>
     <ul>
         <li th:each="book : ${author.books}" th:text="${book.bookName}">book name</li>
     </ul>

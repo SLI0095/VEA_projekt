@@ -3,7 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Amazing bookstore</title>
+    <title>Amazing book database</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link th:href="@{/styles/css/main.css}" rel="stylesheet" />
 </head>
@@ -24,7 +24,7 @@
     </a>
 </div>
 <div class="pageContent">
-    <h1>New rating</h1>
+    <h2>New rating</h2>
     <form method="post" th:action="@{createRating}" th:object="${rating}">
         <label for="user">Author of rating:</label><br>
         <select id="user" th:field="*{ratingAuthor}">
@@ -39,8 +39,8 @@
         <label for="comment">Comment:</label><br>
         <textarea id="comment" name="info" th:field="*{ratingComment}" rows="10" cols="30"></textarea><br>
         <label for="points">Points (between 0 and 10):</label>
-        <input th:field="*{ratingScore}" type="number" id="points" name="points" min="0" max="10"><br><br>
-        <input type="submit" value="Save">
+        <input th:field="*{ratingScore}" type="number" id="points" name="points" min="0" max="10"><br>
+        <button type="submit" value="Save">Save</button>
     </form>
 </div>
 </body>

@@ -19,7 +19,7 @@ public class User extends Person{
 
     private String password;
 
-
+    @JsonView(Views.UserInfo.class)
     @OneToMany(mappedBy = "ratingAuthor")
     private List<Rating> usersRatings;
 
