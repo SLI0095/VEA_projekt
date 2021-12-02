@@ -27,7 +27,8 @@
    <h2 th:text="'Ratings of ' + ${book.bookName}"></h2>
     <th:block th:each="rating : ${book.ratings}">
         <div>
-            <h3 th:text="${rating.ratingAuthor.login} + ' (' + ${rating.ratingScore} + ' out of 10)'"  ></h3>
+<!--            <h3 th:text="${rating.ratingAuthor.login} + ' (' + ${rating.ratingScore} + ' out of 10)'"  ></h3>-->
+            <h3 th:text="${{rating}}"  ></h3>
             <p th:text="${rating.ratingComment}"></p>
         </div><br>
     </th:block>
